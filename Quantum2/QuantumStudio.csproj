@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80F213AA-AAA2-40DF-A211-24306063FA85}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Quantum2</RootNamespace>
+    <AssemblyName>QuantumStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControllerImages.cs" />
+    <Compile Include="Core\Circuit.cs" />
+    <Compile Include="Core\CircuitLoader.cs" />
+    <Compile Include="Core\CircuitSaver.cs" />
+    <Compile Include="Core\Cryptography\QC.cs" />
+    <Compile Include="Core\QFT.cs" />
+    <Compile Include="Core\Cryptography\QKeyGeneration.cs" />
+    <Compile Include="Core\Cryptography\QRandom.cs" />
+    <Compile Include="Core\Cryptography\QXOR.cs" />
+    <Compile Include="Core\ImageProcessing\ConvertImage.cs" />
+    <Compile Include="Core\ImageProcessing\QImage.cs" />
+    <Compile Include="Core\ImageProcessing\QImageData.cs" />
+    <Compile Include="Core\QASM\AST.cs" />
+    <Compile Include="Core\QASM\Error.cs" />
+    <Compile Include="Core\QASM\ErrorHandler.cs" />
+    <Compile Include="Core\QASM\Executor.cs" />
+    <Compile Include="Core\QASM\ID.cs" />
+    <Compile Include="Core\QASM\Instr.cs" />
+    <Compile Include="Core\QASM\Instructions\ADDFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\ADDIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\AGInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\ANDIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CALLInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CGInsruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CMPBInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CMPFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CMPIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CMPRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CQBInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CQRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\CRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\DGInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\DIVFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\DIVIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\DQRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\DRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\GBRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\GQBRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\GSQRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\HLTInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JAInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JBInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JEInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JGEInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JGInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JLEInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JLInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JMPInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\JNEInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MOVFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MOVIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MOVSInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MQSRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MULFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\MULIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\NEGFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\NEGIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\NOTIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\ORIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\PrintInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\RETInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SAQBInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SBQBInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SCAInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SCMInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SCRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SGAInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SGRAInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SGRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SGRSInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SHLIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SHRIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SICInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SRCInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SSGInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SSQRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SSRInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SUBFInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\SUBIInstruction.cs" />
+    <Compile Include="Core\QASM\Instructions\XORIInstruction.cs" />
+    <Compile Include="Core\QASM\LA.cs" />
+    <Compile Include="Core\QASM\Parser.cs" />
+    <Compile Include="Core\QASM\Preprocessor.cs" />
+    <Compile Include="Core\QASM\QGate.cs" />
+    <Compile Include="Core\QASM\QState.cs" />
+    <Compile Include="Core\QASM\Rule.cs" />
+    <Compile Include="Core\QASM\Rules\RCX.cs" />
+    <Compile Include="Core\QASM\Rules\RCY.cs" />
+    <Compile Include="Core\QASM\Rules\RCZ.cs" />
+    <Compile Include="Core\QASM\Rules\RH.cs" />
+    <Compile Include="Core\QASM\Rules\RRX.cs" />
+    <Compile Include="Core\QASM\Rules\RRY.cs" />
+    <Compile Include="Core\QASM\Rules\RRZ.cs" />
+    <Compile Include="Core\QASM\Rules\RS.cs" />
+    <Compile Include="Core\QASM\Rules\RSWAP.cs" />
+    <Compile Include="Core\QASM\Rules\RT.cs" />
+    <Compile Include="Core\QASM\Rules\RU1.cs" />
+    <Compile Include="Core\QASM\Rules\RU2.cs" />
+    <Compile Include="Core\QASM\Rules\RU3.cs" />
+    <Compile Include="Core\QASM\Rules\RX.cs" />
+    <Compile Include="Core\QASM\Rules\RY.cs" />
+    <Compile Include="Core\QASM\Rules\RZ.cs" />
+    <Compile Include="Core\QASM\STToken.cs" />
+    <Compile Include="Core\QASM\STTypes.cs" />
+    <Compile Include="Core\QASM\Token.cs" />
+    <Compile Include="Core\StandartGates\RkGate.cs" />
+    <Compile Include="View\ArgsGateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ArgsGateForm.Designer.cs">
+      <DependentUpon>ArgsGateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BarChartAmplitudeStates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\BarChartAmplitudeStates.Designer.cs">
+      <DependentUpon>BarChartAmplitudeStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexExtension.cs" />
+    <Compile Include="Core\Measure.cs" />
+    <Compile Include="Core\Register.cs" />
+    <Compile Include="Core\StandartGates\CXGate.cs" />
+    <Compile Include="Core\Gate.cs" />
+    <Compile Include="Core\StandartGates\CYGate.cs" />
+    <Compile Include="Core\StandartGates\CZGate.cs" />
+    <Compile Include="Core\StandartGates\HGate.cs" />
+    <Compile Include="Core\Matrix.cs" />
+    <Compile Include="Core\Qubit.cs" />
+    <Compile Include="Core\QRegister.cs" />
+    <Compile Include="Core\StandartGates\RxGate.cs" />
+    <Compile Include="Core\StandartGates\RyGate.cs" />
+    <Compile Include="Core\StandartGates\RzGate.cs" />
+    <Compile Include="Core\StandartGates\SGate.cs" />
+    <Compile Include="Core\StandartGates\SWAPGate.cs" />
+    <Compile Include="Core\StandartGates\TGate.cs" />
+    <Compile Include="Core\StandartGates\U1Gate.cs" />
+    <Compile Include="Core\StandartGates\U2Gate.cs" />
+    <Compile Include="Core\StandartGates\U3Gate.cs" />
+    <Compile Include="Core\StandartGates\XGate.cs" />
+    <Compile Include="Core\StandartGates\YGate.cs" />
+    <Compile Include="Core\StandartGates\ZGate.cs" />
+    <Compile Include="View\GateControl.cs" />
+    <Compile Include="View\GateControl.Designer.cs">
+      <DependentUpon>GateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageChoiseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ImageChoiseForm.Designer.cs">
+      <DependentUpon>ImageChoiseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageManipulationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ImageManipulationForm.Designer.cs">
+      <DependentUpon>ImageManipulationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MeasurementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MeasurementForm.Designer.cs">
+      <DependentUpon>MeasurementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QASMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QASMForm.Designer.cs">
+      <DependentUpon>QASMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StringExtensions.cs" />
+    <Compile Include="View\InitilizationCircuitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InitilizationCircuitForm.Designer.cs">
+      <DependentUpon>InitilizationCircuitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\QubitControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\QubitControl.Designer.cs">
+      <DependentUpon>QubitControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegisterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\RegisterControl.Designer.cs">
+      <DependentUpon>RegisterControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\ArgsGateForm.resx">
+      <DependentUpon>ArgsGateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BarChartAmplitudeStates.resx">
+      <DependentUpon>BarChartAmplitudeStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GateControl.resx">
+      <DependentUpon>GateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ImageChoiseForm.resx">
+      <DependentUpon>ImageChoiseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ImageManipulationForm.resx">
+      <DependentUpon>ImageManipulationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InitilizationCircuitForm.resx">
+      <DependentUpon>InitilizationCircuitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MeasurementForm.resx">
+      <DependentUpon>MeasurementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QASMForm.resx">
+      <DependentUpon>QASMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QubitControl.resx">
+      <DependentUpon>QubitControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RegisterControl.resx">
+      <DependentUpon>RegisterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Core\QASM\Documentation\instructions_docs.txt" />
+    <Content Include="Core\QASM\Documentation\types.txt" />
+    <Content Include="Resources\Play.png" />
+    <Content Include="Resources\StopPlay.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
