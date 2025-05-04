@@ -81,13 +81,27 @@ namespace Quantum2.Core.QASM
         private void RemoveComments(List<string> parts)
         {
 
-            for (int i = 0; i < parts.Count; i++)
+            /*for (int i = 0; i < parts.Count; i++)
             {
                 if (parts[i] == ";")
                 {
                     parts.RemoveRange(i, parts.Count - i);
 
                     continue;
+                }
+            }*/
+            bool inString = false;
+
+            for (int i = 0; i < parts.Count; i++)
+            {
+                if (parts[i] == "'") 
+                    inString = !inString;
+
+                if (parts[i] == ";" && !inString)
+                {
+                    parts.RemoveRange(i, parts.Count - i);
+
+                    break;
                 }
             }
         }
