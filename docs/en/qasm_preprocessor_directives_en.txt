@@ -1,0 +1,29 @@
+Preprocessor directives start with #.
+
+Available preprocessor directives:
+#include 'file.qasm' - Inserts the content of file.qasm (relative path) at the location of the directive.
+
+#define CONSTANT SOURCE - Defines a constant CONSTANT with the value SOURCE. SOURCE can be empty.
+Example:
+
+qasm
+#define TEST_CONSTANT 5  
+print TEST_CONSTANT  ; Preprocessor replaces with: print 5  
+#asign CONSTANT SOURCE - Redefines the constant CONSTANT to SOURCE.
+
+#undef CONSTANT - Undefines the constant CONSTANT.
+
+#ifdef CONSTANT - If CONSTANT is defined, the code between #ifdef and #else/#endif is included.
+Example:
+
+qasm
+#define TEST_CONSTANT_0  
+#ifdef TEST_CONSTANT_0  
+print 6  
+#else  
+print 7  
+#endif  
+; Preprocessor outputs: print 6  
+#ifndef CONSTANT - Opposite of #ifdef.
+#else
+#endif - Ends a conditional block.

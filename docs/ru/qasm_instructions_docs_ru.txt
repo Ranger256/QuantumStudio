@@ -1,0 +1,184 @@
+Инструкция cqr id[qreg] - create quantum register
+Создает квантовый регистр по имени id, длинной 1
+
+Инструкция cr id[reg] - create register
+Создает обычный регистр по имени id, длинной 1
+
+Инструкция cg id[gate] - create gate
+Создает квантовый гейт по имени id
+
+Инструкция cqb id[qbit] - create qbit
+
+Инструкция dqr id[qreg] - delete quantum register
+Удаляет квантовый регистр по имени id
+
+Инструкция dr id[reg] - delete register
+Удаляет регистр по имени id
+
+Инструкция dg id[gate] - delete gate
+Удаляет квантовый гейт по имени id
+
+Инструкция ssqr id[qreg], number[id | literal][byte, word, dword, qword] - set size quantum register
+Изменяет размер квантового регистра, на размер указанный в number
+
+Инструкция ssr id[reg], number[id | literal][byte,word,dword,qword] - set size register
+Изменяет размер регистра, на размер указанный в number
+
+Инструкция scs id[gate], number[id | literal][byte,word,dword,qword] - set count states
+Изменяет количество состояний гейта, на количество указанное в number
+
+Инструкция scr id[gate], number[id | literal][byte,word,dword,qword] - set count rules
+Изменяет количество правил гейта, на количество указанное в number
+
+Инструкция sca id[gate], number[id | literal][byte,word,dword,qword] - set count args
+Изменяет количество аргументов гейта, на количество указанное в number
+
+Инструкция sgs id[gate], number[id | literal][byte,word,dword,qword], id[qstate] - set gate state
+Изменяет в гейте, состояние под номером указанным в number, на состояние указанное в id[qstate]
+
+Инструкция sgr id[gate], number[id | literal][byte,word,dword,qword], id[rule] - set gate rule
+Изменяет в гейте, правило под номером указанным в number, на правило указанное в id[rule]
+
+Инструкция sga id[gate], number[id | literal][byte,word,dword,qword], arg[id | literal][byte,word,dword,qword,sbyte,sword,sdword,sqword,real4,real8] - set gate arg
+Изменяет в гейте, аргумент под номером указанным в number, на аргумент указанный в arg
+
+Инструкция sgrs id[gate], number_rule[id | literal][byte,word,dword,qword], number_rule_state[id | literal][byte,word,dword,qword], number_gate_state[id | literal][byte,word,dword,qword] - set gate rule state
+Изменяет указатель состояния под номером number_rule_state в правиле гейта под номером number_rule, на состояние в гейте под номером number_gate_state 
+
+Инструкция sgra id[gate], number_rule[id | literal][byte,word,dword,qword], number_rule_arg[id | literal][byte,word,dword,qword], number_gate_arg[id | literal][byte,word,dword,qword] - set gate rule state
+Изменяет указатель аргумента под номером number_rule_arg в правиле гейта под номером number_rule, на аргумент в гейте под номером number_gate_arg
+
+Инструкция saqb id[qbit], complex_alpha_number[id | literal][complex], number_real_beta[id | literal][byte,word,dword,qword,sbyte,sword,sdword,sqword,real4,real8] - set alpha quantum bit
+Изменяет alpha амплитуду у кубита, на complex_alpha_number, и считает мнимую часть beta амплитуды по формуле sqrt(1 - |complex_alpha_number|^2 - number_real_beta ^ 2)
+
+Инструкция sbqb id[qbit], complex_beta_number[id | literal][complex], number_real_alpha[id | literal][byte,word,dword,qword,sbyte,sword,sdword,sqword,real4,real8] - set beta quantum bit
+Изменяет beta амплитуду у кубита, на complex_beta_number, и считает мнимую часть alpha амплитуды по формуле sqrt(1 - |complex_beta_number|^2 - number_real_alpha ^ 2)
+
+Инструкция ag id[gate], - apply gate
+Применяет квантовый гейт
+
+Инструкция gsqr state[id[qstate]], qr[id[qreg]] - get state quantum register
+Получает квантовое состояние у qr, и записывает его в state
+
+Инструкция gbr b[id[bit], r[id[reg]], number_bit[id | literal[byte,word,dword,qword] - get bit register
+Получает бит регистра под указанным индексом number_bit, и записывает его в b
+
+Инструкция print id
+Выводит информацию id
+
+Инструкция movi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - move integer
+Записывает целочисленное число number_integer_1, в целочисленный идентификатор number_integer_0
+
+Инструкция movf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword,real4,real8] - move float
+Записывает число с плавающей точкой number_float_1, в идентификатор number_float_0
+
+Инструкция movs string_0[id[string]], string_1[id | literal[string]] - move string
+Записывает строку string_1, в строковой идентификатор string_0
+
+Инструкция addi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - addition integer
+Выполняет целочисленное сложение чисел number_integer_0 + number_integer_1.Записывает результат в number_integer_0
+
+Инструкция addf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword, real4,real8]] - addition float
+Выполняет вещественное сложение чисел number_float_0 + number_float_1. Записывает результат в number_float_0
+
+Инструкция subi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - sub integer
+Выполняет целочисленное вычитание чисел number_integer_0 - number_integer_1.Записывает результат в number_integer_0
+
+Инструкция subf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword, real4,real8]] - sub float
+Выполняет вещественное вычетание чисел number_float_0 - number_float_1. Записывает результат в number_float_0
+
+Инструкция muli number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - multiply integer
+Выполняет целочисленное умножение чисел number_integer_0 * number_integer_1.Записывает результат в number_integer_0
+
+Инструкция mulf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword, real4,real8]] - multiply float
+Выполняет вещественное умножение чисел number_float_0 * number_float_1. Записывает результат в number_float_0
+
+Инструкция divi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - division integer
+Выполняет целочисленное деление чисел number_integer_0 / number_integer_1.Записывает результат в number_integer_0
+
+Инструкция divf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword, real4,real8]] - division float
+Выполняет вещественное деление чисел number_float_0  / number_float_1. Записывает результат в number_float_0
+
+Инструкция shli number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - shl integer
+Выполняет целочисленный логический сдвиг влево числа number_integer_0, на количество разрядов указанном в number_integer_1.Записывает результат в number_integer_0
+
+Инструкция shri number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - shr integer
+Выполняет целочисленный логический сдвиг вправо числа number_integer_0, на количество рязрядов указанном в number_integer_1.Записывает результат в number_integer_0
+
+Инструкция andi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - and integer
+Выполняет целочисленное логическое И чисел number_integer_0, и number_integer_1.Записывает результат в number_integer_0
+
+Инструкция ori number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - or integer
+Выполняет целочисленное логическое ИЛИ чисел number_integer_0, и number_integer_1.
+
+Инструкция xori number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - xor integer
+Выполняет целочисленное логическое ИСКЛЮЧАЮЩИЕ ИЛИ чисел number_integer_0, и number_integer_1.
+
+Инструкция noti number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword]- not integer
+Выполняет целочисленное логическое НЕТ числа number_integer_0
+
+Инструкция negi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword]- neg integer
+Выполняет целочисленное умножение number_integer_0, на -1
+
+Инструкция negf number_float_0[id[real4,real8]] - nef float
+Выполняет вещественное умножение number_float_0, на -1
+
+Инструкция cmpi number_integer_0[id[byte,word,dword,qword,sbyte,sword,sdword,sqword], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - compare integer
+Выполняет целочисленное сравнение чисел number_integer_0, и number_integer_1.В зависимости от результата меняет флаги ZF, и SF.
+
+Инструкция cmpf number_float_0[id[real4,real8]], number_float_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword, real4,real8]] - compare float
+Выполняет вещественное сравнение чисел numbe_float_0, и number_float_1. В зависимости от результата меняет флаги ZF, и SF.
+
+Инструкция cmpr register_0[id[reg], register_1[id[reg]] - compare register
+Выполняет сравнение регистров register_0, и register_1. В зависимости от результата меняет флаги ZF, и SF.
+
+Инструкция cmpb reg_0[id[reg]], number_integer_1[id | literal[byte,word,dword,qword,sbyte,sword,sdword,sqword] - compare integer
+Выполняет сравнение бита, с числом.В зависимости от результата изменяется флаг ZF.
+
+Инструкция jmp label_0[id[label]] - jump
+Выполняет безусловный переход на метку label_0.
+
+Инструкция je label_0[id[label]] - jump equal
+Выполняет условный переход на метку label_0, если ZF == 0
+
+Инструкция jne label_0[id[label]] - jump no equal
+Выполняет условный переход на метку label_0, если ZF != 0
+
+Инструкция jg label_0[id[label]] - jump greater
+Выполняет условный переход на метку label_0, если ZF == 0 && SF == 0
+
+Инструкция jge lbel_0[id[label]] - jump greater equal
+Выполняет условный переход на метку lbel_0, если SF == 0 || ZF == 1
+
+Инструкция jl label_0[id[label]] - jump less
+Выполняет условный переход на метку label_0, если SF == 1 && ZF == 0
+
+Инструкция jle label_0[id[label]] - jump less equal
+Выполняет условный переход на метку label_0, если SF == 1 || ZF == 1
+
+Инструкция ja label_0[id[label]] - jump above
+Выполняет условный переход на метку label_0, если SF == 0 || ZF == 0
+
+Инструкция jb label_0[id[label]] - jump below
+Выполняет условный переход на метку label_0, если SF == 1 && ZF == 0
+
+Инструкция hlt - halt
+Выполняет полную остановку интерпретатора
+
+Инструкция mqsr r0[id[reg]], qstate0[id[qstate]] - measure quantum state register
+Выполняет измерение квантового состояния. Записывает результат в r0. Также коллапсируют амплитуды состояния, кубитов включенных в данное состояние. Если размер r0 меньше количества кубитов у qstate0, выводится ошибка
+
+Инструкция call label_0[id[label]] - call
+Передает управление процедуре label_0.
+
+Инструкция ret - ret
+Выполняет возрат управления на место последнего вызова процедуры(call).
+
+
+
+
+
+
+
+
+

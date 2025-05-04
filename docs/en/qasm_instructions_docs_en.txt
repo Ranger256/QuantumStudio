@@ -1,0 +1,178 @@
+﻿Quantum Instructions
+
+Instruction cqr id[qreg] - Create Quantum Register
+Creates a quantum register named id with a default length of 1.
+
+Instruction cr id[reg] - Create Register
+Creates a classical register named id with a default length of 1.
+
+Instruction cg id[gate] - Create Gate
+Creates a quantum gate named id.
+
+Instruction cqb id[qbit] - Create Qubit
+Creates a qubit named id.
+
+Instruction dqr id[qreg] - Delete Quantum Register
+Deletes the quantum register named id.
+
+Instruction dr id[reg] - Delete Register
+Deletes the classical register named id.
+
+Instruction dg id[gate] - Delete Gate
+Deletes the quantum gate named id.
+
+Memory and State Management
+
+Instruction ssqr id[qreg], number[id | literal][byte, word, dword, qword] - Set Size Quantum Register
+Sets the size of the quantum register id to the value specified by number.
+
+Instruction ssr id[reg], number[id | literal][byte, word, dword, qword] - Set Size Register
+Sets the size of the classical register id to the value specified by number.
+
+Instruction scs id[gate], number[id | literal][byte, word, dword, qword] - Set Count States
+Sets the number of states for the gate id to the value specified by number.
+
+Instruction scr id[gate], number[id | literal][byte, word, dword, qword] - Set Count Rules
+Sets the number of rules for the gate id to the value specified by number.
+
+Instruction sca id[gate], number[id | literal][byte, word, dword, qword] - Set Count Args
+Sets the number of arguments for the gate id to the value specified by number.
+
+Instruction sgs id[gate], number[id | literal][byte, word, dword, qword], id[qstate] - Set Gate State
+Assigns the state id[qstate] to the gate id at the specified index number.
+
+Instruction sgr id[gate], number[id | literal][byte, word, dword, qword], id[rule] - Set Gate Rule
+Assigns the rule id[rule] to the gate id at the specified index number.
+
+Instruction sga id[gate], number[id | literal][byte, word, dword, qword], arg[...] - Set Gate Argument
+Sets the argument arg for the gate id at the specified index number.
+
+Instruction sgrs id[gate], number_rule, number_rule_state, number_gate_state - Set Gate Rule State
+Links the state at index number_rule_state of rule number_rule to the gate’s state at number_gate_state.
+
+Instruction sgra id[gate], number_rule, number_rule_arg, number_gate_arg - Set Gate Rule Argument
+Links the argument at index number_rule_arg of rule number_rule to the gate’s argument at number_gate_arg.
+
+Qubit Operations
+
+Instruction saqb id[qbit], complex_alpha_number, number_real_beta - Set Alpha Amplitude
+Sets the alpha amplitude of qubit id to complex_alpha_number and calculates the imaginary part of beta using:
+sqrt(1 - |complex_alpha_number|² - number_real_beta²).
+
+Instruction sbqb id[qbit], complex_beta_number, number_real_alpha - Set Beta Amplitude
+Sets the beta amplitude of qubit id to complex_beta_number and calculates the imaginary part of alpha using:
+sqrt(1 - |complex_beta_number|² - number_real_alpha²).
+
+Instruction ag id[gate] - Apply Gate
+Applies the quantum gate id to the circuit.
+
+Data Movement and I/O
+
+Instruction gsqr state[id[qstate]], qr[id[qreg]] - Get Quantum Register State
+Retrieves the quantum state of register qr and stores it in state.
+
+Instruction gbr b[id[bit]], r[id[reg]], number_bit - Get Bit from Register
+Retrieves the bit at index number_bit from register r and stores it in b.
+
+Instruction print id
+Prints information about the entity id (register, state, etc.).
+
+Arithmetic Operations
+Instruction movi dest, src - Move Integer
+Copies the integer value from src to dest.
+
+Instruction movf dest, src - Move Float
+Copies the floating-point value from src to dest.
+
+Instruction movs dest, src - Move String
+Copies the string src to dest.
+
+Instruction addi dest, src - Add Integers
+Performs dest = dest + src.
+
+Instruction addf dest, src - Add Floats
+Performs dest = dest + src.
+
+Instruction subi dest, src - Subtract Integers
+Performs dest = dest - src.
+
+Instruction subf dest, src - Subtract Floats
+Performs dest = dest - src.
+
+Instruction muli dest, src - Multiply Integers
+Performs dest = dest * src.
+
+Instruction mulf dest, src - Multiply Floats
+Performs dest = dest * src.
+
+Instruction divi dest, src - Divide Integers
+Performs integer division: dest = dest / src.
+
+Instruction divf dest, src - Divide Floats
+Performs floating-point division: dest = dest / src.
+
+Bitwise Operations
+Instruction shli dest, shift - Shift Left Integer
+Shifts dest left by shift bits.
+
+Instruction shri dest, shift - Shift Right Integer
+Shifts dest right by shift bits.
+
+Instruction andi dest, mask - Bitwise AND
+Performs dest = dest & mask.
+
+Instruction ori dest, mask - Bitwise OR
+Performs dest = dest | mask.
+
+Instruction xori dest, mask - Bitwise XOR
+Performs dest = dest ^ mask.
+
+Instruction noti dest - Bitwise NOT
+Performs dest = ~dest.
+
+Instruction negi dest - Negate Integer
+Performs dest = -dest.
+
+Instruction negf dest - Negate Float
+Performs dest = -dest.
+
+Control Flow
+Instruction jmp label - Jump
+Unconditionally jumps to label.
+
+Instruction je label - Jump if Equal
+Jumps to label if the Zero Flag (ZF) is set.
+
+Instruction jne label - Jump if Not Equal
+Jumps to label if ZF is not set.
+
+Instruction jg label - Jump if Greater
+Jumps to label if ZF == 0 && SF == 0 (unsigned comparison).
+
+Instruction jge label - Jump if Greater or Equal
+Jumps to label if SF == 0 || ZF == 1.
+
+Instruction jl label - Jump if Less
+Jumps to label if SF == 1 && ZF == 0.
+
+Instruction jle label - Jump if Less or Equal
+Jumps to label if SF == 1 || ZF == 1.
+
+Instruction ja label - Jump if Above
+Jumps to label if SF == 0 || ZF == 0.
+
+Instruction jb label - Jump if Below
+Jumps to label if SF == 1 && ZF == 0.
+
+Instruction call label - Call Subroutine
+Transfers control to the subroutine at label.
+
+Instruction ret - Return
+Returns from a subroutine.
+
+Measurement and Termination
+Instruction mqsr dest, qstate - Measure Quantum State
+Measures the quantum state qstate and stores the result in dest. Collapses the amplitudes of the qubits.
+
+Instruction hlt - Halt
+Terminates the interpreter.

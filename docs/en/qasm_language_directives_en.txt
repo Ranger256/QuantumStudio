@@ -1,0 +1,13 @@
+Language directives start with $.
+
+$defname NAME : TYPE - Defines a name NAME with type TYPE.
+
+$const NAME - Marks NAME as constant.
+
+$unconst NAME - Removes the constant flag from NAME.
+
+$label label_name: - Defines a label named label_name. Note: label_name must be defined via $defname.
+Example:
+
+$defname label0 : label  
+$label label0:  

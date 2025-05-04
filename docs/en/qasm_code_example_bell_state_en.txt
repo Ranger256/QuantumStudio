@@ -1,0 +1,51 @@
+#define SIZE_QR_0 1  ; Define constant SIZE_QR_0  
+#define SIZE_QR_1 1  ; Define constant SIZE_QR_1  
+
+$defname qr0 : qreg  ; Define qr0 as a quantum register  
+$defname qr1 : qreg  ; Define qr1 as a quantum register  
+
+$defname r0 : reg    ; Define r0 as a classical register  
+
+$defname state_qr0 : qstate  ; Define state_qr0 as a quantum state  
+$defname state_qr1 : qstate  ; Define state_qr1 as a quantum state  
+
+$defname gate0 : gate  ; Define gate0 as a quantum gate  
+
+cqr qr0  ; Create quantum register qr0  
+cqr qr1  ; Create quantum register qr1  
+cr r0    ; Create classical register r0  
+cg gate0 ; Create quantum gate gate0  
+
+ssqr qr0, SIZE_QR_0  ; Set size of qr0 to SIZE_QR_0  
+ssqr qr1, SIZE_QR_1  ; Set size of qr1 to SIZE_QR_1  
+
+ssr r0, 2  ; Set size of r0 to 2  
+
+gsqr state_qr0, qr0  ; Get quantum state of qr0 into state_qr0  
+gsqr state_qr1, qr1  ; Get quantum state of qr1 into state_qr1  
+
+scs gate0, 2  ; Set gate0's state count to 2  
+scr gate0, 5  ; Set gate0's rule count to 5  
+
+sgr gate0, 0, rlh  ; Set rule 0 of gate0 to rlh (e.g., Hadamard)  
+sgr gate0, 1, rlx  ; Set rule 1 of gate0 to rlx (e.g., Pauli-X)  
+sgr gate0, 2, rlh  ; Set rule 2 of gate0 to rlh  
+sgr gate0, 3, rlcx ; Set rule 3 of gate0 to rlcx (e.g., CNOT)  
+sgr gate0, 4, rlh  ; Set rule 4 of gate0 to rlh  
+
+sgrs gate0, 0, 0, 0  ; Link state 0 of rule 0 to gate state 0  
+sgrs gate0, 1, 0, 1  ; Link state 0 of rule 1 to gate state 1  
+sgrs gate0, 2, 0, 1  ; Link state 0 of rule 2 to gate state 1  
+sgrs gate0, 3, 0, 0  ; Link state 0 of rule 3 to gate state 0  
+sgrs gate0, 3, 1, 1  ; Link state 1 of rule 3 to gate state 1  
+sgrs gate0, 4, 0, 0  ; Link state 0 of rule 4 to gate state 0  
+
+sgs gate0, 0, state_qr0  ; Assign state_qr0 to gate0's state 0  
+sgs gate0, 1, state_qr1  ; Assign state_qr1 to gate0's state 1  
+
+ag gate0  ; Apply gate0  
+
+mqsr r0, state_qr0  ; Measure state_qr0 into r0  
+
+print state_qr0  ; Print state_qr0  
+print r0         ; Print measurement results  

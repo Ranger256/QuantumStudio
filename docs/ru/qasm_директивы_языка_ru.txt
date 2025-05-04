@@ -1,0 +1,13 @@
+Все дерективы языка начинаются с символа $
+
+$defname NAME : TYPE - определяет имя с типом TYPE
+
+$const NAME - делает NAME константным
+
+$unconst NAME - делает NAME неконстантным
+
+$label label_name: - определяет метку с именем label_name  ВАЖНО имя labe_name обязано быть определено через defname
+Пример:
+$defname label0 : label
+$label label0:
+

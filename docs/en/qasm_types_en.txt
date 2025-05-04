@@ -1,0 +1,28 @@
+﻿Data Types:
+
+qreg - Quantum register
+reg - Classical register
+
+qbit - Quantum bit (qubit)
+bit - Classical bit
+
+qstate - Quantum state
+gate - Quantum gate
+rule - Rule defining a quantum gate’s behavior
+
+byte - Unsigned 8-bit integer
+word - Unsigned 16-bit integer
+dword - Unsigned 32-bit integer
+qword - Unsigned 64-bit integer
+
+sbyte - Signed 8-bit integer
+sword - Signed 16-bit integer
+sdword - Signed 32-bit integer
+sqword - Signed 64-bit integer
+
+real4 - 32-bit floating-point number
+real8 - 64-bit floating-point number
+
+string - String
+complex - Complex number
+label - Label

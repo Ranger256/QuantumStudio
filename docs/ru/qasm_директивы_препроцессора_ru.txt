@@ -1,0 +1,30 @@
+ƒирективы препроцессора начинаютс€ с символа #
+ƒоступные директивы препроцессора:
+
+#include 'file.qasm' - выполн€ет вставку содержимого файла file.qasm(относительный путь), в место где распологаетс€ #include
+
+#define CONSTANT SOURCE - определ€ет константу CONSTANT с содержимым SOURCE, SOURCE может быть пустым.ѕри встрече с CONSTANT, мен€ет CONSTANT на SOURCE
+ѕример:
+#define TEST_CONSTANT 5
+print TEST_CONSTANT ;препроцессор преобразует в -> print 5
+
+#asign CONSTANT SOURCE - мен€ет содержимое константы CONSTANT на SOURCE
+
+#undef CONSTANT - уничтожает константу CONSTANT
+
+#ifdef CONSTANT - если существует константа CONSTANT, то препроцессор допустит код до #else или #endif, если нет то нет
+ѕример:
+#define TEST_CONSTANT_0
+#ifdef TEST_CONSTANT_0
+print 6
+#else
+print 7
+#endif
+ѕрепроцессора преобразует в -> print 6
+
+#ifndef CONSTANT - действует наоборот #ifdef
+
+#else
+
+#endif - конец определени€ #ifdef, #ifndef, #else
+
